@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# 训练好的模型文件（约 406 MB，随机森林的默认与调参后两个模型各约 135 MB，超过 GitHub 单文件 100 MB 限制）
+# 运行 src/hot_video_comment_ml/hot_comment_ml.py 可重新生成
+model/ml/*.pkl
+# 例外：预测用的打包文件只有约 21 MB，随仓库发布，clone 后可直接运行 hot_comment_predict.py
+!model/ml/评论情感分类.pkl
+
+# 含真实用户名 / UID 的原始评论数据，不随仓库发布
+# 对外发布用脱敏版本：data/hot_comments_anonymized.csv、data/hot_comments_clean_anonymized.csv
+# 生成脚本：src/hot_video_comment_crawler/hot_comment_anonymize.py
+data/hot_comments.csv
+data/hot_comments_clean.csv
+
+# 编辑器 / 系统
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# 大模型微调 / 深度学习 / RAG 部分（src/hot_video_comment_finetune、_dl、_rag、_agent）
+# 基座模型约 1 GB，需自己提前放到 model/finetune/base_model 下（脚本不下载）
+model/finetune/base_model/
+# LoRA 适配器只有十几 MB，随仓库发布：clone 后下载基座即可直接推理
+!model/finetune/lora_adapter/
+# TextCNN 权重和 RAG 索引都能用脚本重新生成
+model/dl/textcnn.pth
+model/rag/
+# 训练日志与 checkpoint（运行后生成；output 下 4 个结果 txt 随仓库发布）
+output/lora_train/
+output/lora_train_log.json
+# 微调数据由 hot_comment_sft_data.py 生成
+data/finetune/

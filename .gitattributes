@@ -1,0 +1,8 @@
+# GitHub 语言统计：.ipynb 是 JSON，GitHub 会把整份文件（含内嵌的 base64 图片输出）都算成
+# 「Jupyter Notebook」，所以语言条上 Notebook 占 95.5%、真实代码的 Python 只剩 4.5%。
+# 下面一行让 notebook 不参与语言统计，语言条就按真实代码显示为 Python。
+*.ipynb linguist-detectable=false
+
+# 明确标记为二进制文件，避免被当作文本处理（换行符转换、文本 diff 等）
+*.png binary
+*.pkl binary
